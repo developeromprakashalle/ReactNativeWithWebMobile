@@ -79,7 +79,8 @@ jobs:
           node-version: "22" # Ensure Node.js is compatible with your React Native version
 
       - name: Install Dependencies
-        run: cd mobile
+        run: |
+          cd mobile
           npm install
 
       - name: Set up JDK 17
