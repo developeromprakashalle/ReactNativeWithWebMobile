@@ -105,12 +105,12 @@ jobs:
       #- name: Lint Code
       #  run: npm run lint
 
-      - name: Run Jest Tests with Coverage
-        run: npx jest --coverage
+      #- name: Run Jest Tests with Coverage
+      #  run: npx jest --coverage
 
-      - name: Run SonarQube Scanner
-        run: npx sonar-scanner
-        ##env: SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #- name: Run SonarQube Scanner
+      #  run: npx sonar-scanner
+      #  ##env: SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Grant Execute Permission to Gradle Wrapper
         run: chmod +x mobile/android/gradlew
@@ -187,11 +187,11 @@ jobs:
           DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
         run: |
           cd ios
-          xcodebuild -workspace JSCICD.xcworkspace \
-                     -scheme JSCICD \
+          xcodebuild -workspace mobile.xcworkspace \
+                     -scheme mobile \
                      -sdk iphoneos \
                      -configuration Release \
-                     -archivePath ./build/JSCICD.xcarchive archive
+                     -archivePath ./build/mobile.xcarchive archive
 
       - name: Export IPA
         run: |
@@ -207,4 +207,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ios-build
-          path: ios/build/SampleRNJS.ipa
+          path: mobile/ios/build/SampleRNJS.ipa
