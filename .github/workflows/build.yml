@@ -137,8 +137,7 @@ jobs:
       - name: Build RELEASE Android APK
         if: inputs.buildType == 'RELEASE'
         run: |
-          cd mobile
-          cd android 
+          cd mobile/android 
           ./gradlew assembleRelease bundleRelease
 
       - name: Rename RELEASE APK
